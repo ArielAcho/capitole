@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class PriceEntity {
 
     @Id
-    @GeneratedValue(generator = "UUID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(fetch = FetchType.EAGER)

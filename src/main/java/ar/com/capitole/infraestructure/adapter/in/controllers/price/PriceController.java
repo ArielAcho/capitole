@@ -1,5 +1,9 @@
 package ar.com.capitole.infraestructure.adapter.in.controllers.price;
 
+import ar.com.capitole.application.ports.in.PriceServicePort;
+import ar.com.capitole.domain.model.entity.Brand;
+import ar.com.capitole.domain.model.entity.Price;
+import ar.com.capitole.domain.model.entity.Product;
 import ar.com.capitole.infraestructure.adapter.in.controllers.price.model.PriceResponse;
 import ar.com.capitole.infraestructure.adapter.in.controllers.price.model.Error;
 import ar.com.capitole.infraestructure.adapter.in.controllers.price.model.Response;
@@ -23,6 +27,9 @@ import java.time.LocalDateTime;
 @RestController
 @RequiredArgsConstructor
 public class PriceController {
+
+    private final PriceServicePort priceServicePort;
+
     @Operation(summary = "Get a price by id", description = "Returns a price as per the id")
     @ApiResponses(value = {
             @ApiResponse(
@@ -40,6 +47,11 @@ public class PriceController {
                                                           @Valid
                                                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                           LocalDateTime date) {
-        return null;
+        Price result = priceServicePort.findPriceWithHigherPriorityForTheDay(
+                Brand.builder().id(brandId).build(),
+                Product.builder().id(productId).build(),
+                date);
+
+        return Response.ok(PriceResponse.from(result));
     }
 }

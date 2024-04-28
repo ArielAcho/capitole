@@ -1,8 +1,6 @@
 package ar.com.capitole.infraestructure.adapter.out.persistence.price.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Data
@@ -14,6 +12,7 @@ import lombok.*;
 public class BrandEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;

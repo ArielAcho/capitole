@@ -20,7 +20,7 @@ public class PriceFactory {
                                 .name("ZARA")
                                 .build())
                         .product(Product.builder()
-                                .id(55555L)
+                                .id(99L)
                                 .build())
                         .dateRange(DateRange.builder()
                                 .startDate(LocalDateTime.of(2024, 11, 21, 10, 0, 0))
