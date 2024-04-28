@@ -10,4 +10,5 @@ import java.util.List;
 public interface PricePersistencePort {
 
     List<Price> findPriceWithHigherPriorityForTheDay(Brand brand, Product product, LocalDateTime date);
+
 }

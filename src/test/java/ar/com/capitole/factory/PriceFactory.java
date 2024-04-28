@@ -33,24 +33,27 @@ public class PriceFactory {
                                 .isoName("EUR")
                                 .build())
                         .build(),
-                Price.builder()
-                        .id(1L)
-                        .brand(buildBrandPullAndBear())
-                        .product(buildProductJean())
-                        .dateRange(DateRange.builder()
-                                .startDate(LocalDateTime.of(2023, 12, 15, 10, 0, 0))
-                                .endDate(LocalDateTime.of(2024, 1, 31, 23, 59, 59))
-                                .build())
-                        .priority(2)
-                        .priceList(2)
-                        .currency(Currency.builder()
-                                .amount(50.0)
-                                .isoName("EUR")
-                                .build())
-                        .build()
+                buildPrice()
         );
     }
 
+    public static Price buildPrice() {
+        return Price.builder()
+                .id(1L)
+                .brand(buildBrandPullAndBear())
+                .product(buildProductJean())
+                .dateRange(DateRange.builder()
+                        .startDate(LocalDateTime.of(2023, 12, 15, 10, 0, 0))
+                        .endDate(LocalDateTime.of(2024, 1, 31, 23, 59, 59))
+                        .build())
+                .priority(2)
+                .priceList(2)
+                .currency(Currency.builder()
+                        .amount(50.0)
+                        .isoName("EUR")
+                        .build())
+                .build();
+    }
 
 
     public static Product buildProductJean() {

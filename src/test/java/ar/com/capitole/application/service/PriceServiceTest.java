@@ -1,7 +1,6 @@
 package ar.com.capitole.application.service;
 
 import ar.com.capitole.application.exception.PriceNotAvailableException;
-import ar.com.capitole.application.ports.in.PriceServicePort;
 import ar.com.capitole.application.ports.out.PricePersistencePort;
 import ar.com.capitole.domain.model.Currency;
 import ar.com.capitole.domain.model.DateRange;
@@ -17,7 +16,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static ar.com.capitole.factory.PriceFactory.*;
+import static ar.com.capitole.factory.PriceFactory.buildProductJean;
+import static ar.com.capitole.factory.PriceFactory.buildBrandPullAndBear;
+import static ar.com.capitole.factory.PriceFactory.buildPricesList;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -72,7 +73,7 @@ class PriceServiceTest {
 
         // Then
         assertThatCode(() -> sut.findPriceWithHigherPriorityForTheDay(brand, product, date))
-                .hasMessage("Price is not available");
+                .hasMessage( e.getMessage() );
     }
 
     private Price buildExpectedPrice() {

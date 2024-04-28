@@ -14,7 +14,6 @@ public class PriceMapper {
 
     public static Price to(PriceEntity priceEntity) {
         return Price.builder().id(priceEntity.getId())
-
                 .brand(Brand.builder()
                         .id(priceEntity.getBrand().getId())
                         .name(priceEntity.getBrand().getName())
