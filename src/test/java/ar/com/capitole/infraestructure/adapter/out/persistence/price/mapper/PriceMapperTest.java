@@ -1,4 +1,4 @@
-package ar.com.capitole.infraestructure.adapter.out.persistence.price.mapper;
+package ar.com.capitole.it.controller.adapter.out.persistence.price.mapper;
 
 import static ar.com.capitole.factory.PriceFactory.buildPrice;
 import static ar.com.capitole.factory.PricePersistenceFactory.getPriceEntity;
@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import ar.com.capitole.domain.model.entity.Price;
 import ar.com.capitole.infraestructure.adapter.out.persistence.price.entity.PriceEntity;
+import ar.com.capitole.infraestructure.adapter.out.persistence.price.mapper.PriceMapper;
 import org.junit.jupiter.api.Test;
 
 

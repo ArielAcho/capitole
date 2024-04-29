@@ -1,11 +1,10 @@
-package ar.com.capitole.infraestructure.adapter.out.persistence.price;
+package ar.com.capitole.it.controller.adapter.out.persistence.price;
 
 import ar.com.capitole.domain.model.entity.Brand;
 import ar.com.capitole.domain.model.entity.Price;
 import ar.com.capitole.domain.model.entity.Product;
-import ar.com.capitole.infraestructure.adapter.out.persistence.price.entity.BrandEntity;
+import ar.com.capitole.infraestructure.adapter.out.persistence.price.PriceMySQLPersistenceAdapter;
 import ar.com.capitole.infraestructure.adapter.out.persistence.price.entity.PriceEntity;
-import ar.com.capitole.infraestructure.adapter.out.persistence.price.entity.ProductEntity;
 import ar.com.capitole.infraestructure.adapter.out.persistence.price.repository.PriceJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import static ar.com.capitole.factory.PriceFactory.*;
+import static ar.com.capitole.factory.PriceFactory.buildPrice;
+import static ar.com.capitole.factory.PriceFactory.buildProductJean;
+import static ar.com.capitole.factory.PriceFactory.buildBrandPullAndBear;
 import static ar.com.capitole.factory.PricePersistenceFactory.getPriceEntity;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -50,9 +51,9 @@ class PriceMySQLPersistenceAdapterTest {
         // When
         List<Price> actualList = sut.findPriceWithHigherPriorityForTheDay(brand,product,date);
 
+        //Then
         assertNotNull(actualList);
         assertEquals(priceEntityList.size(), actualList.size());
-
         Price actual = actualList.get(0);
         assertEquals(expected.getId(), actual.getId());
         assertEquals(expected.getProduct().getId(), actual.getProduct().getId());

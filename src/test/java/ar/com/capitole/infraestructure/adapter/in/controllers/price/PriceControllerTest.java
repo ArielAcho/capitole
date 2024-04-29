@@ -1,9 +1,10 @@
-package ar.com.capitole.infraestructure.adapter.in.controllers.price;
+package ar.com.capitole.it.controller.adapter.in.controllers.price;
 
 import ar.com.capitole.application.ports.in.PriceServicePort;
 import ar.com.capitole.domain.model.entity.Brand;
 import ar.com.capitole.domain.model.entity.Price;
 import ar.com.capitole.domain.model.entity.Product;
+import ar.com.capitole.infraestructure.adapter.in.controllers.price.PriceController;
 import ar.com.capitole.infraestructure.adapter.in.controllers.price.model.PriceResponse;
 import ar.com.capitole.infraestructure.adapter.in.controllers.price.model.Response;
 import org.junit.jupiter.api.Test;
@@ -14,9 +15,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 
-import static ar.com.capitole.factory.PriceFactory.*;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
+import static ar.com.capitole.factory.PriceFactory.buildPrice;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -46,7 +48,6 @@ class PriceControllerTest {
 
         // When
         Response actual = sut.getPriceForDate(2L, 1L, LocalDateTime.of(2024, 4, 28, 10, 0, 0));
-
 
         // Then
         assertNotNull(actual);

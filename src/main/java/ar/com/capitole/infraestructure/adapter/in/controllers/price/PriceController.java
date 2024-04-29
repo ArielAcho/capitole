@@ -37,6 +37,18 @@ public class PriceController {
                     description = "Successfully retrieved",
                     content = @Content(
                             schema = @Schema(implementation = PriceResponse.class),
+                            mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(
+                    responseCode = "400",
+                    description = "Invalid argument",
+                    content = @Content(
+                            schema = @Schema(implementation = Error.class),
+                            mediaType = MediaType.APPLICATION_JSON_VALUE)),
+            @ApiResponse(
+                    responseCode = "500",
+                    description = "Internal Server Error",
+                    content = @Content(
+                            schema = @Schema(implementation = Error.class),
                             mediaType = MediaType.APPLICATION_JSON_VALUE))
     })
     @GetMapping(value = "/price", produces = MediaType.APPLICATION_JSON_VALUE)
