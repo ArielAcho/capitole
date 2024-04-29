@@ -9,23 +9,24 @@ import java.time.LocalDateTime;
 public class PricePersistenceFactory {
 
     public static PriceEntity getPriceEntity() {
-        BrandEntity brandEntity = new BrandEntity();
-        brandEntity.setId(2L);
-        brandEntity.setName("PULL&BEAR");
+        BrandEntity brandEntity = BrandEntity.builder()
+                .id(2L)
+                .name("PULL&BEAR").build();
 
-        ProductEntity productEntity = new ProductEntity();
-        productEntity.setId(1L);
-        productEntity.setName("JEAN");
-        PriceEntity priceEntity = new PriceEntity();
-        priceEntity.setId(1L);
-        priceEntity.setBrand(brandEntity);
-        priceEntity.setStartDate(LocalDateTime.of(2023, 12, 15, 10, 0, 0));
-        priceEntity.setEndDate(LocalDateTime.of(2024, 1, 31, 23, 59, 59));
-        priceEntity.setProduct(productEntity);
-        priceEntity.setPrice(50.0);
-        priceEntity.setPriority(2);
-        priceEntity.setCurrency("EUR");
-        priceEntity.setPriceList(2);
-        return priceEntity;
+        ProductEntity productEntity = ProductEntity.builder()
+                .id(1L)
+                .name("JEAN").build();
+
+        return PriceEntity.builder()
+                .id(1L)
+                .brand(brandEntity)
+                .startDate(LocalDateTime.of(2023, 12, 15, 10, 0, 0))
+                .endDate(LocalDateTime.of(2024, 1, 31, 23, 59, 59))
+                .product(productEntity)
+                .price(50.0)
+                .priority(2)
+                .currency("EUR")
+                .priceList(2)
+                .build();
     }
 }
